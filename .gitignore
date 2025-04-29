@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+/datasets
+
 # Distribution / packaging
 .Python
 build/
@@ -172,3 +174,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+.gitignore
+asl_model.h5
+best_enhanced_model.h5
+best_model.h5
+dep.txt

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASL Recognition</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #videoFeed { border: 2px solid #333; margin-bottom: 10px; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        #status { margin-top: 10px; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>ASL Recognition System</h1>
+    <img id="videoFeed" src="{{ url_for('video_feed') }}">
+    <div>
+        <button onclick="togglePause()">Pause/Resume</button>
+        <button onclick="resetText()">Reset</button>
+        <button onclick="speakWord()">Speak Word</button>
+        <button onclick="speakSentence()">Speak Sentence</button>
+    </div>
+    <div id="status">
+        <p>Letter: <span id="currentLetter"></span></p>
+        <p>Word: <span id="currentWord"></span></p>
+        <p>Sentence: <span id="currentSentence"></span></p>
+    </div>
+
+    <script>
+        function updateText() {
+            fetch('/get_text')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('currentLetter').textContent = data.letter;
+                    document.getElementById('currentWord').textContent = data.word;
+                    document.getElementById('currentSentence').textContent = data.sentence;
+                });
+            setTimeout(updateText, 500);
+        }
+        
+        function togglePause() {
+            fetch('/toggle_pause', { method: 'POST' });
+        }
+        
+        function resetText() {
+            fetch('/reset', { method: 'POST' });
+        }
+        
+        function speakWord() {
+            fetch('/speak_word', { method: 'POST' });
+        }
+        
+        function speakSentence() {
+            fetch('/speak_sentence', { method: 'POST' });
+        }
+        
+        // Start updating text
+        updateText();
+    </script>
+</body>
+</html>
