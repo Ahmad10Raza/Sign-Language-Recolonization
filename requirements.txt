@@ -1,0 +1,27 @@
+# Core packages with guaranteed compatibility
+numpy==1.20.3  # Updated to satisfy both OpenCV and TensorFlow
+opencv-python==4.5.5.64
+pillow==9.0.1
+protobuf==4.25.3
+pyttsx3==2.90
+
+# MediaPipe with compatible versions
+mediapipe==0.10.21
+flatbuffers>=2.0
+
+# TensorFlow ecosystem
+tensorflow-gpu==2.8.0
+tensorboard==2.8.0
+keras==2.8.0
+h5py==3.1.0
+
+# Flask/web server
+flask==2.0.3
+gunicorn==20.1.0
+werkzeug==2.0.3
+jinja2==3.0.3
+click==8.0.4
+
+# Utilities
+matplotlib==3.4.3
+pyparsing==2.4.7
